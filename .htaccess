@@ -1,0 +1,16 @@
+DirectoryIndex index.php
+
+
+RewriteEngine on
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}.php -f
+RewriteRule ^(.*)$ $1.php
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}.html -f
+RewriteRule ^(.*)$ $1.html
+
+RewriteRule galeria          galeria.php
+RewriteRule sedes            sedes.php
+RewriteRule kenpo            kenpo.php
+RewriteRule historia         historia.php
+RewriteRule ^img/fondokenpo\.jpg$ - [L]

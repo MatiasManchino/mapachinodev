@@ -1,0 +1,115 @@
+/* Cambiar el color de selección de texto */
+::selection {
+    background-color: transparent;
+}
+
+body {
+    background: #F0A355; /* Color de fondo inicial */
+    overflow-x: hidden; /* Deshabilita el desplazamiento horizontal */
+    overflow-y: hidden; /* Deshabilita el desplazamiento vertical */
+    transition: background-color 0.5s; /* Transición de 0.5 segundos para el cambio de color de fondo */
+    position: relative; /* Necesario para el posicionamiento de las luces */
+}
+
+/* Estilos para el contenedor */
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Ocupa toda la altura de la ventana */
+}
+
+input[type="checkbox"] {
+    width: 0;
+    height: 0;
+    visibility: hidden;
+}
+
+label {
+    display: block;
+    width: 300px;
+    height: 100px;
+    background-color: #A04E1E; /* Color del fondo del cafe */
+    border-radius: 100px;
+    position: relative;
+    cursor: pointer;
+    transition: 0.5s;
+    box-shadow: 18px 22px 20px #000000cc;
+    z-index: 20;
+    user-select: none; /* Evita la selección del texto */
+    -webkit-user-select: none; /* Para Safari */
+    -ms-user-select: none; /* Para IE 10+ */
+}
+
+label::after {
+    content: "";
+    width: 35px;
+    height: 35px;
+    background-color: #5F3500;
+    background-image: url(coffee.webp);
+    background-size: cover;
+    background-position: center;
+    position: absolute;
+    border-radius: 70px;
+    top: 7px;
+    left: 9px;
+    transition: 0.5s;
+    box-shadow: -3px 5px 10px #000000cc;
+    user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none; /* Para IE 10+ */
+}
+
+input:checked + label:after {
+    left: calc(100% - 12px);
+    transform: translateX(-100%);
+    background-image: url('coctel.png');
+    background-color: #141613; /* Color del boton coctel */
+    box-shadow: 0px 0px 5px #67FF4F;
+}
+
+input:checked + label {
+    background-color: #1D2129; /* Color del fondo del coctel */
+    box-shadow: 0px 0px 25px #67FF4F;
+}
+
+label:active:after {
+    width: 90px;
+}
+
+label, 
+label:focus, 
+label:active {
+    outline: none;
+    -webkit-tap-highlight-color: transparent;
+}
+
+body.dark-mode {
+    background-color: #0A0B16;
+    overflow: hidden;
+}
+
+svg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+.path {
+    stroke: rgba(255, 255, 0, 0.8); /* Amarillo en modo oscuro */
+    stroke-width: 2;
+    fill: none;
+    stroke-dasharray: 3;
+    stroke-dashoffset: 100000;
+    animation: draw 10s linear forwards; /* Crecimiento más lento */
+    filter: drop-shadow(0 0 10px rgba(255, 255, 0, 1)) drop-shadow(0 0 20px rgba(255, 255, 0, 0.5));
+}
+
+@keyframes draw {
+    to {
+        stroke-dashoffset: 0;
+    }
+}
